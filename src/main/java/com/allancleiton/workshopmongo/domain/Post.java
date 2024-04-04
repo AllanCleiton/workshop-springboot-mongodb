@@ -1,22 +1,33 @@
 package com.allancleiton.workshopmongo.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Post {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
+public class Post implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
 	private String id;
 	private LocalDateTime date;
 	private String title;
 	private String bady;
+	private User author;
 	
 	public Post() {}
 
-	public Post(String id, LocalDateTime date, String title, String bady) {
+	public Post(String id, LocalDateTime date, String title, String bady, User author) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.title = title;
 		this.bady = bady;
+		this.author = author;
 	}
 
 	public String getId() {
@@ -50,6 +61,14 @@ public class Post {
 	public void setBady(String bady) {
 		this.bady = bady;
 	}
+	
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
 
 	@Override
 	public int hashCode() {
@@ -67,6 +86,8 @@ public class Post {
 		Post other = (Post) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 	
 	
 	
