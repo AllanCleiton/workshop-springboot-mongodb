@@ -1,6 +1,7 @@
 package com.allancleiton.workshopmongo.config;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class Instanciation implements CommandLineRunner{
 	
 		userR.saveAll(Arrays.asList(maria, alex, bob));
 		
-		Post post1 = new Post(null, LocalDateTime.now().minusHours(3), "Partil viagem", "vou viajar pra são paulo, abraços", new AuthorDTO(maria));
-		Post post2 = new Post(null, LocalDateTime.now().minusHours(3), "Bom dia", "Acordei feliz hoje", new AuthorDTO(maria));
+		Post post1 = new Post(null, LocalDateTime.parse("27/08/2018 15:52", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "Partil viagem", "vou viajar pra são paulo, abraços", new AuthorDTO(maria));
+		Post post2 = new Post(null, LocalDateTime.parse("20/07/2022 13:11", DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "Bom dia", "Acordei feliz hoje", new AuthorDTO(maria));
 		
 		postR.saveAll(Arrays.asList(post1, post2));
 		
