@@ -37,6 +37,10 @@ public class Instanciation implements CommandLineRunner{
 		Post post2 = new Post(null, LocalDateTime.now().minusHours(3), "Bom dia", "Acordei feliz hoje", new AuthorDTO(maria));
 		
 		postR.saveAll(Arrays.asList(post1, post2));
+		
+		maria.getPosts().addAll(Arrays.asList(post1, post2));
+		
+		userR.save(maria);
 	}
 
 }
