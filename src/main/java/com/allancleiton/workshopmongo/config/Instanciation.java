@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.allancleiton.workshopmongo.domain.Post;
 import com.allancleiton.workshopmongo.domain.User;
+import com.allancleiton.workshopmongo.dto.AuthorDTO;
 import com.allancleiton.workshopmongo.repositories.PostRepository;
 import com.allancleiton.workshopmongo.repositories.UserRepository;
 
@@ -32,8 +33,8 @@ public class Instanciation implements CommandLineRunner{
 	
 		userR.saveAll(Arrays.asList(maria, alex, bob));
 		
-		Post post1 = new Post(null, LocalDateTime.now().minusHours(3), "Partil viagem", "vou viajar pra são paulo, abraços", maria);
-		Post post2 = new Post(null, LocalDateTime.now().minusHours(3), "Bom dia", "Acordei feliz hoje", maria);
+		Post post1 = new Post(null, LocalDateTime.now().minusHours(3), "Partil viagem", "vou viajar pra são paulo, abraços", new AuthorDTO(maria));
+		Post post2 = new Post(null, LocalDateTime.now().minusHours(3), "Bom dia", "Acordei feliz hoje", new AuthorDTO(maria));
 		
 		postR.saveAll(Arrays.asList(post1, post2));
 	}
